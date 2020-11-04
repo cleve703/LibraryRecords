@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+.title {
+  width: 50%;
+}
+.author {
+  width: 30%;
+}
+.read, .pages {
+  width: 10%;
+}
+td, th {
+  border: solid 1px gray;
+}

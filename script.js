@@ -1,4 +1,29 @@
-let myLibrary = []
+let myLibrary = [
+  {
+    title: "War and Peace",
+    author: "Leo Tolstoy",
+    pages: "1225",
+    read: false,
+  },
+  {
+    title: "On Killing",
+    author: "Dave Grossman",
+    pages: "400",
+    read: true,
+  },
+  {
+    title: "South of Broad",
+    author: "Pat Conroy",
+    pages: "528",
+    read: false,
+  },
+  {
+    title: "The Room Where It Happened",
+    author: "John Bolton",
+    pages: "444",
+    read: false,
+  },
+]
 
 function Book(title, author, pages, read) {
   this.title = title
@@ -20,7 +45,6 @@ function addToLibrary(title, author, pages, read) {
   var num = (myLibrary.length + 1);
   eval(`var book${num} = new Book(title, author, pages, read);`);
   eval(`myLibrary.push(book${num});`);  
-  console.log(myLibrary);
   insertData()
 }
 
@@ -34,5 +58,6 @@ function insertData() {
 
   })
   tableRef.innerHTML=tr;
-  console.log(tr);
 }
+
+insertData()
