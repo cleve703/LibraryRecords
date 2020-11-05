@@ -6,13 +6,16 @@ table {
   width: 50%;
 }
 .author {
-  width: 30%;
+  width: 20%;
 }
-.read, .pages {
+.read, .pages, .delete {
   width: 10%;
 }
 td, th {
   border: solid 1px gray;
+}
+td:last-child, th:last-child {
+  border: none;
 }
 ul {
   list-style-type: none;

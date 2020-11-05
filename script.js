@@ -50,26 +50,34 @@ function addToLibrary(title, author, pages, read) {
 
 function insertData() {
   var table = document.getElementsByTagName('tbody');
-  var tr="";
+  var tr = "";
+  var i = 0;
   myLibrary.forEach(x=>{
      tr+='<tr>';
-     tr+='<td>'+x.title+'</td>'+'<td>'+x.author+'</td>'+'<td>'+x.pages+'</td>'+'<td>'+x.read+'</td>'
-     tr+='</tr>'
-
-  })
+     tr+='<td>'+x.title+'</td>'+'<td>'+x.author+'</td>'+'<td>'+x.pages+'</td>'+'<td>'+x.read+'</td>'+'<td><button type="button" id="delete-'+i+'">Delete</td>';
+     tr+='</tr>';
+     i+=1;
+    })
   tableRef.innerHTML=tr;
+  myLibrary.forEach(deleteButton);
 }
 
-insertData()
+
+
+function deleteButton(item, index) {
+  document.getElementById(`delete-${index}`).addEventListener('click', function(){
+    myLibrary.splice(index, 1)
+    insertData()
+  })
+}
+
 
 document.getElementById('addBook').addEventListener('click', function(){
-  // document.getElementsById("new_book").style.display="block";
   document.getElementById('new_book').style.display = "block";
   document.getElementById('addBook').style.display = "none";
 })
 
 document.getElementById('new_title_submit').addEventListener('click', function(){
-  console.log('clicked');
   var title = document.getElementById('new_title').value;
   var author = document.getElementById('new_author').value;
   var pages = document.getElementById('new_pages').value;
@@ -86,3 +94,5 @@ function clearForm() {
   document.getElementById('new_pages').value = "";
   document.querySelector('input[name="new_read"]:checked').checked = false;
 }
+
+insertData()
