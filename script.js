@@ -1,36 +1,12 @@
-let myLibrary = [
-  {
-    title: "War and Peace",
-    author: "Leo Tolstoy",
-    pages: "1225",
-    read: false,
-  },
-  {
-    title: "On Killing",
-    author: "Dave Grossman",
-    pages: "400",
-    read: true,
-  },
-  {
-    title: "South of Broad",
-    author: "Pat Conroy",
-    pages: "528",
-    read: false,
-  },
-  {
-    title: "The Room Where It Happened",
-    author: "John Bolton",
-    pages: "444",
-    read: false,
-  },
-]
+let myLibrary = []
 
+        
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
   this.pages = pages
   this.read = read
-  }
+}
 
 Book.prototype.toggleRead = function() {
   if (this.read == false) {
@@ -51,26 +27,32 @@ function addToLibrary(title, author, pages, read) {
   insertData();
 }
 
+addToLibrary("War and Peace", "Leo Tolstoy", "1225", false)
+addToLibrary("On Killing", "Dave Grossman", "400", true)
+addToLibrary("South of Broad", "Pat Conroy", "528", false)
+        
 function insertData() {
   var table = document.getElementsByTagName('tbody');
   var tr = "";
   var i = 0;
   myLibrary.forEach(x=>{
      tr+='<tr>';
-     tr+='<td>'+x.title+'</td>'+'<td>'+x.author+'</td>'+'<td>'+x.pages+'</td>'+'<td>'+x.read+'</td>'+'<td><button type="button" id="delete-'+i+'">Delete</td>';
+     tr+='<td>'+x.title+'</td>'+'<td>'+x.author+'</td>'+'<td>'+x.pages+'</td>'+'<td><button type="button" id="read-status-'+i+'">'+x.read+'</button></td>'+'<td><button type="button" id="delete-'+i+'">Delete</td>';
      tr+='</tr>';
      i+=1;
     })
   tableRef.innerHTML=tr;
-  myLibrary.forEach(deleteButton);
+  myLibrary.forEach(addButtonActions);
 }
 
-
-
-function deleteButton(item, index) {
+function addButtonActions(item, index) {
   document.getElementById(`delete-${index}`).addEventListener('click', function(){
     myLibrary.splice(index, 1)
-    insertData()
+    insertData();
+  })
+  document.getElementById(`read-status-${index}`).addEventListener('click', function(){
+    myLibrary[index].toggleRead();
+    insertData();
   })
 }
 
@@ -85,6 +67,11 @@ document.getElementById('new_title_submit').addEventListener('click', function()
   var author = document.getElementById('new_author').value;
   var pages = document.getElementById('new_pages').value;
   var read = document.querySelector('input[name="new_read"]:checked').value;
+  if (String(read).toLocaleLowerCase() == true) {
+    read = true
+  } else {
+    read = false
+  }
   addToLibrary(title, author, pages, read);
   clearForm()
   document.getElementById('addBook').style.display = "block";
