@@ -61,3 +61,28 @@ function insertData() {
 }
 
 insertData()
+
+document.getElementById('addBook').addEventListener('click', function(){
+  // document.getElementsById("new_book").style.display="block";
+  document.getElementById('new_book').style.display = "block";
+  document.getElementById('addBook').style.display = "none";
+})
+
+document.getElementById('new_title_submit').addEventListener('click', function(){
+  console.log('clicked');
+  var title = document.getElementById('new_title').value;
+  var author = document.getElementById('new_author').value;
+  var pages = document.getElementById('new_pages').value;
+  var read = document.querySelector('input[name="new_read"]:checked').value;
+  addToLibrary(title, author, pages, read);
+  clearForm()
+  document.getElementById('addBook').style.display = "block";
+  document.getElementById('new_book').style.display = "none";
+})
+
+function clearForm() {
+  document.getElementById('new_title').value = "";
+  document.getElementById('new_author').value = "";
+  document.getElementById('new_pages').value = "";
+  document.querySelector('input[name="new_read"]:checked').checked = false;
+}

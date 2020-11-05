@@ -14,3 +14,26 @@ table {
 td, th {
   border: solid 1px gray;
 }
+ul {
+  list-style-type: none;
+}
+form {
+  display: none;
+}
+.text-input, .radio-input {
+  display: grid;
+  grid-template-columns: 100px 300px;
+}
+.text-input > label {
+  grid-column: 1;
+}
+.text-input > input {
+  grid-column: 2;
+}
+.radio-input > p {
+  grid-column: 1;
+  margin: 0;
+}
+.radio-input > div {
+  grid-column: 2;
+}
