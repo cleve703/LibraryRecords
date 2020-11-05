@@ -30,13 +30,16 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
-  this.info = function() {
-    if (read == true) {
-      return(title + " by " + author + ", " + pages + " pages, already read")
-    } else {
-      return(title + " by " + author + ", " + pages + " pages, not read yet")
-    }
   }
+
+Book.prototype.toggleRead = function() {
+  if (this.read == false) {
+    this.read = true;
+  }
+  else {
+    this.read = false;
+  }
+  insertData();
 }
 
 var tableRef = document.getElementById('library').getElementsByTagName('tbody')[0];
@@ -45,7 +48,7 @@ function addToLibrary(title, author, pages, read) {
   var num = (myLibrary.length + 1);
   eval(`var book${num} = new Book(title, author, pages, read);`);
   eval(`myLibrary.push(book${num});`);  
-  insertData()
+  insertData();
 }
 
 function insertData() {
