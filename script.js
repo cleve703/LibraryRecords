@@ -1,5 +1,4 @@
 let myLibrary = []
-
         
 function Book(title, author, pages, read) {
   this.title = title
@@ -37,7 +36,7 @@ function insertData() {
   var i = 0;
   myLibrary.forEach(x=>{
      tr+='<tr>';
-     tr+='<td>'+x.title+'</td>'+'<td>'+x.author+'</td>'+'<td>'+x.pages+'</td>'+'<td><button type="button" id="read-status-'+i+'">'+x.read+'</button></td>'+'<td><button type="button" id="delete-'+i+'">Delete</td>';
+     tr+='<td>'+x.title+'</td>'+'<td>'+x.author+'</td>'+'<td>'+x.pages+'</td>'+'<td><button type="button" class="read-status" id="read-status-'+i+'">'+x.read+'</button></td>'+'<td><button type="button" class="delete-button" id="delete-'+i+'">Delete</td>';
      tr+='</tr>';
      i+=1;
     })
@@ -57,9 +56,9 @@ function addButtonActions(item, index) {
 }
 
 
-document.getElementById('addBook').addEventListener('click', function(){
+document.getElementById('add-book').addEventListener('click', function(){
   document.getElementById('new_book').style.display = "block";
-  document.getElementById('addBook').style.display = "none";
+  document.getElementById('add-book').style.display = "none";
 })
 
 document.getElementById('new_title_submit').addEventListener('click', function(){
@@ -74,7 +73,13 @@ document.getElementById('new_title_submit').addEventListener('click', function()
   }
   addToLibrary(title, author, pages, read);
   clearForm()
-  document.getElementById('addBook').style.display = "block";
+  document.getElementById('add-book').style.display = "block";
+  document.getElementById('new_book').style.display = "none";
+})
+
+document.getElementById('new_title_cancel').addEventListener('click', function(){
+  clearForm()
+  document.getElementById('add-book').style.display = "block";
   document.getElementById('new_book').style.display = "none";
 })
 
@@ -82,7 +87,7 @@ function clearForm() {
   document.getElementById('new_title').value = "";
   document.getElementById('new_author').value = "";
   document.getElementById('new_pages').value = "";
-  document.querySelector('input[name="new_read"]:checked').checked = false;
+  document.querySelector('input[name="new_read"]').checked = false;
 }
 
 insertData()

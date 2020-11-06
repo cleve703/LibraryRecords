@@ -3,34 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Library Records</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <table id="library">
-    <colgroup>
-      <col class="title">
-      <col class="author">
-      <col class="pages">
-      <col class="read">
-      <col class="delete">
-    </colgroup>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Pages</th>
-        <th>Read</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-      </tr>
-    </tbody>
-  </table>
-  <button id="addBook">Add book</button>
-  
-  <form id="new_book">
+  <h1>My Library</h1>
+  <div id="table-container">
+    <div>
+      <table id="library">
+        <colgroup>
+          <col class="title">
+          <col class="author">
+          <col class="pages">
+          <col class="read">
+          <col class="delete">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Read</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="add-button">
+      <button id="add-book">Add book</button>
+    </div>
+
+    <form id="new_book">
     <ul>
       <li class="text-input">
         <label for="new_title">Title:</label>
@@ -53,9 +61,13 @@
           <label for="false">False</label>
         </div>
       </li>
-      <button type="button" id="new_title_submit">Submit</button> 
+      <div class="button-container">
+        <button type="button" id="new_title_submit">Submit</button> 
+        <button type="button" id="new_title_cancel">Cancel</button>
+      </div>
     </ul>
   </form>
+</div>
   
 </body>
 <script type="text/javascript" src="script.js"></script>
