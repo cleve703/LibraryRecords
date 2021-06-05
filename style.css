@@ -77,3 +77,6 @@ button {
   height: 2rem;
   width: 90px;
 }
+input:invalid {
+  border-color: firebrick;
+}

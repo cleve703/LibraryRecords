@@ -62,19 +62,23 @@ document.getElementById('add-book').addEventListener('click', function(){
 })
 
 document.getElementById('new_title_submit').addEventListener('click', function(){
-  var title = document.getElementById('new_title').value;
-  var author = document.getElementById('new_author').value;
-  var pages = document.getElementById('new_pages').value;
-  var read = document.querySelector('input[name="new_read"]:checked').value;
-  if (String(read).toLocaleLowerCase() == true) {
-    read = true
+  var title = document.getElementById('new_title');
+  var author = document.getElementById('new_author');
+  var pages = document.getElementById('new_pages');
+  var read = document.querySelector('input[name="new_read"]:checked');
+  if (!title.validity.valid || !author.validity.valid || !pages.validity.valid) {
+
   } else {
-    read = false
+    if (String(read.value).toLocaleLowerCase() == true) {
+      read = true
+    } else {
+      read = false
+    }
+    addToLibrary(title.value, author.value, pages.value, read);
+    clearForm()
+    document.getElementById('add-book').style.display = "block";
+    document.getElementById('new_book').style.display = "none";
   }
-  addToLibrary(title, author, pages, read);
-  clearForm()
-  document.getElementById('add-book').style.display = "block";
-  document.getElementById('new_book').style.display = "none";
 })
 
 document.getElementById('new_title_cancel').addEventListener('click', function(){
